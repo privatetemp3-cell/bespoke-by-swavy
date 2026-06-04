@@ -127,10 +127,10 @@ function WhyChoose() {
 /* ---------- GALLERY ---------- */
 function Gallery() {
   const shots = [
-    { id: 'back',  src: './assets/cut-back.jpg',    label: 'Textured taper' },
-    { id: 'razor', src: './assets/cut-razor.jpg',   label: 'Razor line-up' },
-    { id: 'beard', src: './assets/cut-beard.jpg',   label: 'Beard detailing' },
-    { id: 'vibe',  src: './assets/studio-vibe.jpg', label: 'In the chair' },
+    { id: 'back',  src: './cut-back.jpg',    label: 'Textured taper' },
+    { id: 'razor', src: './cut-razor.jpg',   label: 'Razor line-up' },
+    { id: 'beard', src: './cut-beard.jpg',   label: 'Beard detailing' },
+    { id: 'vibe',  src: './studio-vibe.jpg', label: 'In the chair' },
   ];
   return (
     <Section id="gallery" dark>
@@ -163,7 +163,7 @@ function About() {
       <div className="about-grid" style={{ display: 'grid', gridTemplateColumns: '0.9fr 1.1fr', gap: 'clamp(36px,6vw,72px)', alignItems: 'center' }}>
         <Reveal>
           <div style={{ borderRadius: 'var(--r-lg)', overflow: 'hidden', boxShadow: 'var(--shadow-card-light)', border: '1px solid var(--line-light)' }}>
-            <image-slot id="about-portrait" src="./assets/cut-razor.jpg" shape="rounded" radius="0"
+            <image-slot id="about-portrait" src="./cut-razor.jpg" shape="rounded" radius="0"
               placeholder="Drop barber portrait"
               style={{ width: '100%', aspectRatio: '4/5', display: 'block', background: 'var(--sand)' }}></image-slot>
           </div>

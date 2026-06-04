@@ -55,16 +55,16 @@ function ClipperStage() {
           background: 'radial-gradient(circle, rgba(224,194,126,0.15), rgba(224,194,126,0.045) 42%, transparent 70%)',
         }}></div>
         {/* poster image — always visible as fallback */}
-        <img src="./assets/clipper-poster.jpg" alt="Black Wahl Vapour clipper, floating"
+        <img src="./clipper-poster.jpg" alt="Black Wahl Vapour clipper, floating"
           style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover',
             WebkitMaskImage: maskCss, maskImage: maskCss, filter: 'drop-shadow(0 30px 50px rgba(0,0,0,.5))' }} />
         {/* scroll-driven video on desktop (reduced-motion: hidden) */}
         {!staticMode && (
-          <video ref={videoRef} muted playsInline preload="auto" poster="./assets/clipper-poster.jpg"
+          <video ref={videoRef} muted playsInline preload="auto" poster="./clipper-poster.jpg"
             aria-hidden="true"
             style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover',
               WebkitMaskImage: maskCss, maskImage: maskCss, filter: 'drop-shadow(0 30px 50px rgba(0,0,0,.5))' }}>
-            <source src="./assets/clipper-spin.mp4" type="video/mp4" />
+            <source src="./clipper-spin.mp4" type="video/mp4" />
           </video>
         )}
       </div>
