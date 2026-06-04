@@ -7,18 +7,16 @@ function ClipperStage() {
   const curT = useRefHero(0);
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const isMobile = window.matchMedia('(max-width: 860px)').matches;
-  const staticMode = reduce || isMobile;
 
+  // Desktop only: scroll-scrub the video timeline
   useEffectHero(() => {
-    if (staticMode) return;
+    if (reduce || isMobile) return;
     const v = videoRef.current;
     if (!v) return;
 
     const apply = () => {
       const v2 = videoRef.current;
       if (!v2 || !v2.duration) return;
-      // Spin range tied to clipper's real position — rotation completes exactly
-      // as the masked clipper scrolls off the top edge
       let range = window.innerHeight;
       const fr = floatRef.current;
       if (fr) {
@@ -34,16 +32,26 @@ function ClipperStage() {
       try { v2.currentTime = curT.current; } catch (e) {}
     };
 
+    const onMeta = () => apply();
+    v.addEventListener('loadedmetadata', onMeta);
+    if (v.readyState >= 1) apply();
+
     let ticking = false;
     const onScroll = () => {
       if (!ticking) { ticking = true; setTimeout(() => { apply(); ticking = false; }, 16); }
     };
     window.addEventListener('scroll', onScroll, { passive: true });
-    setTimeout(apply, 200);
-    return () => window.removeEventListener('scroll', onScroll);
-  }, [staticMode]);
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      v.removeEventListener('loadedmetadata', onMeta);
+    };
+  }, [reduce, isMobile]);
 
   const maskCss = 'radial-gradient(ellipse 44% 58% at 50% 50%, #000 36%, transparent 76%)';
+  const videoStyle = {
+    position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover',
+    WebkitMaskImage: maskCss, maskImage: maskCss, filter: 'drop-shadow(0 30px 50px rgba(0,0,0,.5))',
+  };
 
   return (
     <div className="clipper-wrap" style={{ position: 'relative', display: 'flex', alignItems: 'flex-end', justifyContent: 'center', width: '100%', height: '100%', paddingBottom: '6vh' }}>
@@ -54,18 +62,22 @@ function ClipperStage() {
           width: '128%', aspectRatio: '1', borderRadius: '50%', pointerEvents: 'none',
           background: 'radial-gradient(circle, rgba(224,194,126,0.15), rgba(224,194,126,0.045) 42%, transparent 70%)',
         }}></div>
-        {/* poster image — always visible as fallback */}
-        <img src="./clipper-poster.jpg" alt="Black Wahl Vapour clipper, floating"
-          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover',
-            WebkitMaskImage: maskCss, maskImage: maskCss, filter: 'drop-shadow(0 30px 50px rgba(0,0,0,.5))' }} />
-        {/* scroll-driven video on desktop (reduced-motion: hidden) */}
-        {!staticMode && (
-          <video ref={videoRef} muted playsInline preload="auto" poster="./clipper-poster.jpg"
-            aria-hidden="true"
-            style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover',
-              WebkitMaskImage: maskCss, maskImage: maskCss, filter: 'drop-shadow(0 30px 50px rgba(0,0,0,.5))' }}>
-            <source src="./clipper-spin.mp4" type="video/mp4" />
-          </video>
+
+        {/* poster — shown for reduced-motion users, hidden once video paints */}
+        <img src="./clipper-poster.jpg" alt="Black Wahl Vapour clipper, floating" style={videoStyle} />
+
+        {!reduce && (
+          isMobile
+            ? /* Mobile: autoplay looping spin — no scroll scrub needed */
+              <video muted playsInline autoPlay loop preload="auto"
+                poster="./clipper-poster.jpg" aria-hidden="true" style={videoStyle}>
+                <source src="./clipper-spin.mp4" type="video/mp4" />
+              </video>
+            : /* Desktop: scroll-scrubbed — ref drives currentTime */
+              <video ref={videoRef} muted playsInline preload="auto"
+                poster="./clipper-poster.jpg" aria-hidden="true" style={videoStyle}>
+                <source src="./clipper-spin.mp4" type="video/mp4" />
+              </video>
         )}
       </div>
     </div>

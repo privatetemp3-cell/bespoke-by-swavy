@@ -5,6 +5,13 @@
       "headers": [
         { "key": "Content-Type", "value": "text/javascript; charset=utf-8" }
       ]
+    },
+    {
+      "source": "/(.*)\\.mp4",
+      "headers": [
+        { "key": "Content-Type",  "value": "video/mp4" },
+        { "key": "Accept-Ranges", "value": "bytes" }
+      ]
     }
   ]
 }
