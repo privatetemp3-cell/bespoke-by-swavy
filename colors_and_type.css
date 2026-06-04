@@ -1,0 +1,173 @@
+/* =====================================================================
+   BESPOKE STUDIOS BY SWAVY — Foundations: Color + Type
+   Premium local barber. Warm charcoal, antique gold, ivory.
+   Fonts loaded via Google Fonts (see @import). Substitutes for the
+   logo lettering — flag to client if exact logo fonts are required.
+   ===================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Pinyon+Script&family=Jost:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
+
+:root {
+  /* ---------- TYPE FAMILIES ---------- */
+  --font-display: 'Cinzel', 'Times New Roman', serif;      /* engraved Roman caps — echoes the logo's STUDIOS */
+  --font-script:  'Pinyon Script', 'Snell Roundhand', cursive; /* flourish — echoes the Bespoke wordmark, used sparingly */
+  --font-sans:    'Jost', system-ui, -apple-system, 'Segoe UI', sans-serif; /* UI + body */
+
+  /* ---------- RAW COLOR TOKENS ---------- */
+  /* Warm neutral darks */
+  --ink:        #15120E;   /* primary near-black (warm) */
+  --espresso:   #221A12;   /* deep brown — secondary dark surface */
+  --char-2:     #2C241B;   /* raised dark surface */
+  --char-3:     #3A3024;   /* hairline / raised border on dark */
+
+  /* Warm neutral lights */
+  --cream:      #FBF8F1;   /* lightest paper */
+  --ivory:      #F4EEE2;   /* primary light surface */
+  --sand:       #E6DAC4;   /* beige panel / divider band */
+  --sand-deep:  #D8C8AB;
+
+  /* Antique gold — muted, never flashy */
+  --gold:       #C29A4C;   /* primary accent */
+  --gold-deep:  #A67E33;   /* pressed / on-light text gold */
+  --gold-light: #E0C27E;   /* highlight / on-dark gold text */
+  --gold-glow:  rgba(194,154,76,0.30);
+
+  /* Quiet warmth accents — Kenyan layer, used VERY sparingly */
+  --olive:      #3B4632;   /* deep muted green */
+  --clay:       #A65B3A;   /* terracotta / clay */
+
+  /* Feedback */
+  --success:    #5B7A4E;
+  --danger:     #B4503C;
+
+  /* ---------- SEMANTIC: TEXT ON DARK (default site mode) ---------- */
+  --fg1: #F4EEE2;                    /* primary text on dark */
+  --fg2: rgba(244,238,226,0.70);     /* secondary text */
+  --fg3: rgba(244,238,226,0.46);     /* muted / captions */
+  --fg-gold: var(--gold-light);
+
+  /* ---------- SEMANTIC: TEXT ON LIGHT ---------- */
+  --ink-fg1: #1B160F;
+  --ink-fg2: rgba(27,22,15,0.66);
+  --ink-fg3: rgba(27,22,15,0.42);
+  --ink-gold: var(--gold-deep);
+
+  /* ---------- SEMANTIC: SURFACES ---------- */
+  --bg:          var(--ink);
+  --surface:     var(--char-2);
+  --surface-2:   var(--char-3);
+  --bg-light:    var(--ivory);
+  --surface-light: var(--cream);
+
+  /* ---------- BORDERS / LINES ---------- */
+  --line-dark:   rgba(244,238,226,0.12);
+  --line-dark-2: rgba(244,238,226,0.20);
+  --line-light:  rgba(27,22,15,0.12);
+  --hairline-gold: rgba(194,154,76,0.40);
+
+  /* ---------- RADII ---------- */
+  --r-xs: 3px;
+  --r-sm: 6px;
+  --r-md: 10px;
+  --r-lg: 16px;
+  --r-xl: 24px;
+  --r-pill: 999px;
+
+  /* ---------- SPACING (4px base) ---------- */
+  --s-1: 4px;   --s-2: 8px;   --s-3: 12px;  --s-4: 16px;
+  --s-5: 24px;  --s-6: 32px;  --s-7: 48px;  --s-8: 64px;
+  --s-9: 96px;  --s-10: 128px; --s-11: 160px;
+
+  /* ---------- SHADOWS (warm-tinted, soft) ---------- */
+  --shadow-sm:  0 1px 2px rgba(0,0,0,0.30);
+  --shadow-md:  0 8px 24px rgba(0,0,0,0.35);
+  --shadow-lg:  0 24px 60px rgba(0,0,0,0.45);
+  --shadow-gold: 0 10px 40px var(--gold-glow);
+  --shadow-card-light: 0 12px 32px rgba(27,22,15,0.10);
+
+  /* ---------- MOTION ---------- */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 180ms;
+  --dur: 320ms;
+  --dur-slow: 640ms;
+
+  /* ---------- TYPE SCALE (semantic) ---------- */
+  --eyebrow-size: 13px;
+  --eyebrow-track: 0.34em;
+}
+
+/* =====================================================================
+   SEMANTIC TYPE CLASSES
+   ===================================================================== */
+.display {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(44px, 7vw, 104px);
+  line-height: 0.98;
+  letter-spacing: 0.01em;
+  text-wrap: balance;
+}
+.h1 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(34px, 4.4vw, 60px);
+  line-height: 1.04;
+  letter-spacing: 0.01em;
+  text-wrap: balance;
+}
+.h2 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(26px, 3vw, 40px);
+  line-height: 1.1;
+  letter-spacing: 0.015em;
+  text-wrap: balance;
+}
+.h3 {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: clamp(19px, 1.6vw, 23px);
+  line-height: 1.25;
+  letter-spacing: 0.005em;
+}
+.script {
+  font-family: var(--font-script);
+  font-weight: 400;
+  font-size: clamp(40px, 6vw, 84px);
+  line-height: 1;
+  color: var(--gold-light);
+}
+.eyebrow {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--eyebrow-size);
+  letter-spacing: var(--eyebrow-track);
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.body-lg {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: clamp(17px, 1.4vw, 19px);
+  line-height: 1.6;
+}
+.body {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.6;
+}
+.small {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.overline {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}

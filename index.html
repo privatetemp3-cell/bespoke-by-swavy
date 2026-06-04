@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Bespoke Studios by Swavy — premium local barbering in Middlesbrough. Precision cuts for every hair type. Book online today.">
+  <title>Bespoke Studios by Swavy — Bespoke Barbering, Middlesbrough</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="./assets/logo-transparent.png">
+
+  <!-- Design tokens: type + colour -->
+  <link rel="stylesheet" href="./colors_and_type.css">
+
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--ink);
+      color: var(--fg1);
+      font-family: var(--font-sans);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    a { text-decoration: none; }
+    .nav-link { position: relative; transition: color var(--dur-fast); }
+    .nav-link:hover { color: var(--gold-light); }
+    .star-fill { fill: var(--gold); }
+    .star-fill svg { fill: var(--gold); }
+    .burger { display: none !important; }
+
+    /* Reveal entrance — transform-only so content stays visible if
+       the animation timeline is paused (preview iframes, slow devices) */
+    @keyframes revUp {
+      from { transform: translateY(var(--rev-y, 14px)); }
+      to   { transform: none; }
+    }
+    .reveal { animation: revUp var(--dur-slow) var(--ease-out) both; }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { animation: none !important; transform: none !important; }
+    }
+
+    /* ── Responsive breakpoints ──────────────────────────── */
+    @media (max-width: 980px) {
+      .why-grid,
+      .about-grid,
+      .contact-grid { grid-template-columns: 1fr !important; }
+      .grid-3 { grid-template-columns: repeat(2, 1fr) !important; }
+    }
+    @media (max-width: 860px) {
+      .desk-nav  { display: none !important; }
+      .burger    { display: inline-flex !important; }
+      .hero-grid { grid-template-columns: 1fr !important; text-align: center; }
+      .hero-text .eyebrow { justify-content: center; }
+      .hero-visual { order: -1; min-height: 320px !important; }
+      .hero-text > div[style*="flex"] { justify-content: center; }
+    }
+    @media (max-width: 620px) {
+      .grid-3       { grid-template-columns: 1fr !important; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr) !important; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="root">
+  <!-- Static hero skeleton: paints instantly (no JS) for slow connections.
+       React replaces this on mount. -->
+  <div style="min-height:100vh;display:flex;align-items:center;overflow:hidden;padding-top:72px;box-sizing:border-box;background:radial-gradient(120% 90% at 80% 20%,var(--espresso) 0%,var(--ink) 55%);">
+    <!-- Static header -->
+    <div style="position:fixed;top:0;left:50%;transform:translateX(-50%);width:100%;max-width:1200px;height:84px;display:flex;align-items:center;justify-content:space-between;padding:0 24px;box-sizing:border-box;">
+      <div style="line-height:1;">
+        <span style="font-family:var(--font-script);font-size:34px;color:var(--gold-light);display:block;margin-bottom:-4px;">Bespoke</span>
+        <span style="font-family:var(--font-display);font-weight:600;font-size:11px;letter-spacing:.42em;color:var(--fg1);padding-left:.42em;">STUDIOS</span>
+      </div>
+      <a href="https://booksy.com/en-gb/170447_bespoke-studios-by-swavy_barber_515951_middlesbrough"
+         target="_blank" rel="noopener noreferrer"
+         style="font-family:var(--font-sans);font-weight:600;font-size:15px;white-space:nowrap;background:var(--gold);color:#1a1206;border-radius:999px;padding:13px 22px;text-decoration:none;">
+        Book Your Cut
+      </a>
+    </div>
+    <!-- Static hero content -->
+    <div style="position:relative;max-width:1200px;margin:0 auto;padding:40px 24px 56px;width:100%;display:grid;grid-template-columns:1fr 1.2fr;gap:24px;align-items:center;box-sizing:border-box;">
+      <div>
+        <div style="font-family:var(--font-display);font-weight:600;font-size:13px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);">Local &amp; Premium Barbering</div>
+        <h1 style="font-family:var(--font-display);font-weight:600;font-size:clamp(40px,6vw,78px);line-height:.99;color:var(--fg1);margin:20px 0 0;letter-spacing:.01em;">
+          Precision cuts<br>for <span style="font-family:var(--font-script);font-weight:400;color:var(--gold-light);font-size:1.18em;line-height:.8;">every</span> hair type.
+        </h1>
+        <p style="font-family:var(--font-sans);font-size:clamp(16px,1.5vw,19px);line-height:1.6;color:var(--fg2);max-width:460px;margin:22px 0 0;">
+          Bespoke barbering, shaped around you. Clean fades, sharp trims and tailored grooming — finished with detail you can feel.
+        </p>
+        <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:32px;">
+          <a href="https://booksy.com/en-gb/170447_bespoke-studios-by-swavy_barber_515951_middlesbrough"
+             target="_blank" rel="noopener noreferrer"
+             style="font-family:var(--font-sans);font-weight:600;font-size:17px;white-space:nowrap;background:var(--gold);color:#1a1206;border-radius:999px;padding:17px 32px;text-decoration:none;">
+            Book Your Cut
+          </a>
+          <span style="font-family:var(--font-sans);font-weight:600;font-size:17px;white-space:nowrap;color:var(--fg1);border:1px solid var(--line-dark-2);border-radius:999px;padding:17px 32px;cursor:pointer;">
+            View Services
+          </span>
+        </div>
+      </div>
+      <div style="position:relative;min-height:min(84vh,680px);display:flex;align-items:flex-end;justify-content:center;padding-bottom:6vh;">
+        <div style="position:relative;width:108%;max-width:700px;aspect-ratio:864/496;">
+          <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:128%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle, rgba(224,194,126,0.15), rgba(224,194,126,0.045) 42%, transparent 70%);"></div>
+          <img src="./assets/clipper-poster.jpg" alt="Black Wahl Vapour clipper, floating"
+            style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;-webkit-mask-image:radial-gradient(ellipse 44% 58% at 50% 50%,#000 36%,transparent 76%);mask-image:radial-gradient(ellipse 44% 58% at 50% 50%,#000 36%,transparent 76%);filter:drop-shadow(0 30px 50px rgba(0,0,0,.5));">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- React 18 + Babel (CDN) -->
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<script src="./image-slot.js"></script>
+
+<!-- Components (loaded in dependency order) -->
+<script type="text/babel" src="./ui.jsx"></script>
+<script type="text/babel" src="./Header.jsx"></script>
+<script type="text/babel" src="./Hero.jsx"></script>
+<script type="text/babel" src="./Sections.jsx"></script>
+<script type="text/babel" src="./Booking.jsx"></script>
+
+<script type="text/babel">
+  const { useEffect } = React;
+
+  function App() {
+    useEffect(() => {
+      if (window.lucide) window.lucide.createIcons({ attrs: { 'stroke-width': 1.75 } });
+    });
+    return (
+      <React.Fragment>
+        <Header />
+        <Hero />
+        <Services />
+        <WhyChoose />
+        <Gallery />
+        <About />
+        <Reviews />
+        <BookingCTA />
+        <Contact />
+        <Footer />
+      </React.Fragment>
+    );
+  }
+
+  ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>
